@@ -23,11 +23,20 @@ export async function removeContact(id) {
   const contacts = await listContacts();
   const index = contacts.findIndex((contact) => contact.id === id);
   if (index === -1) return null;
-  const res = contacts.splice(index, 1);
 
+  const [result] = contacts.splice(index, 1);
   await updateListContacts(contacts);
-  return res;
+  return result;
 }
+// {
+//   const contacts = await listContacts();
+//   const index = contacts.findIndex((contact) => contact.id === id);
+//   if (index === -1) return null;
+//   const res = contacts.splice(index, 1);
+
+//   await updateListContacts(contacts);
+//   return res;
+// }
 
 export async function addContact(name, email, phone) {
   const contacts = await listContacts();
